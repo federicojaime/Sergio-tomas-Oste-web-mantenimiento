@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio Tomás Oste | Sitio Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a2639;
+            --secondary: #3f51b5;
+            --accent: #ff5722;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --text: #333333;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .construction-ribbon {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--accent);
+            color: white;
+            padding: 10px;
+            transform: rotate(45deg) translateX(30%) translateY(-100%);
+            transform-origin: top right;
+            width: 250px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        header {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(26, 38, 57, 0.9), rgba(63, 81, 181, 0.8)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            z-index: 2;
+            padding: 0 20px;
+            max-width: 1200px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: var(--primary);
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .roles {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .role {
+            margin: 0 15px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--light);
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -17px;
+        }
+
+        .right::after {
+            left: -17px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .date {
+            display: inline-block;
+            color: var(--dark);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .books-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .books-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .book-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .book-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .book-info {
+            padding: 20px;
+        }
+
+        .book-title {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .book-year {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .book-description {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .contact-section {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 15px;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media screen and (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .left::after,
+            .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .roles {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .role {
+                margin: 5px 0;
+            }
+        }
+
+        .coming-soon {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon h2 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .coming-soon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+
+        .launch-countdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .countdown-item {
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            background: #f5f5f5;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--text);
+            text-transform: uppercase;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-button:hover {
+            background: #e64a19;
+        }
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hide-loader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .sport-achievements {
+            background: linear-gradient(to right, rgba(26, 38, 57, 0.9), rgba(63, 81, 181, 0.8)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .achievement-item {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .achievement-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="loader-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Construction Ribbon -->
+    <div class="construction-ribbon">Sitio en construcción</div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Sergio <span>Oste</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#trayectoria">Trayectoria</a></li>
+                <li><a href="#libros">Libros</a></li>
+                <li><a href="#deportes">Deportes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="inicio">
+        <div class="header-content">
+            <h1>Sergio Tomás Oste</h1>
+            <p class="subtitle">Comprometido con San Luis y su gente</p>
+            <div class="roles">
+                <div class="role">Abogado</div>
+                <div class="role">Político</div>
+                <div class="role">Escritor</div>
+                <div class="role">Deportista</div>
+            </div>
+        </div>
+        <a href="#sobre-mi" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </header>
+
+    <!-- About Section -->
+    <section id="sobre-mi">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Sobre Mí</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="./tomas.jpg" alt="Sergio Tomás Oste">
+                </div>
+                <div class="about-text">
+                    <p>Nacido en Villa Mercedes, provincia de San Luis, el 21 de marzo 1966. Está casado con Mariela
+                        Alexandra Mithiaux y tiene dos hijos, Franco y Nathalie.</p>
+                    <p>Curso sus estudios primarios en la escuela Normal Superior Juan Llerena y luego en el colegio San
+                        Buenaventura, egresando a los 16 años con el título de Perito Mercantil. Estudió derecho en la
+                        Universidad Católica de Córdoba, egresando en 1988.</p>
+                    <p>En la década de los noventa, ejerció la profesión de Abogado. Fundó la ex emisora FM: "La Radio"
+                        94.5 en la ciudad de Villa Mercedes. Fue periodista y Director del diario vespertino "La Voz del
+                        Sud en 1994". También fundó la ex empresa familiar "TRANSUD" de transporte de carga de larga
+                        distancia.</p>
+                    <p>A lo largo de su trayectoria, ha desempeñado diversos cargos públicos, siempre comprometido con
+                        el desarrollo y bienestar de San Luis. Como Senador Provincial (1993-1997), impulsó numerosos
+                        proyectos de ley que han tenido un impacto significativo en la vida de los sanluiseños.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="trayectoria">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Trayectoria Pública</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">1988 - 1992</span>
+                        <h3>Asesor Legal de la Policía Provincial</h3>
+                        <p>Brindó asesoramiento jurídico a la institución policial, contribuyendo al fortalecimiento del
+                            marco legal en su actuación.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">1991</span>
+                        <h3>Profesor de Derecho Civil</h3>
+                        <p>Profesor ad honorem en la escuela de Oficiales de la Policía de la Provincia, formando a los
+                            futuros oficiales en materia de derecho civil.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">1992 - 1993</span>
+                        <h3>Asesor del bloque justicialista</h3>
+                        <p>Asesor en el Honorable Concejo Deliberante de Villa Mercedes, colaborando en la elaboración
+                            de proyectos y ordenanzas municipales.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">1993 - 1997</span>
+                        <h3>Senador Provincial</h3>
+                        <p>Representó al Departamento Pedernera en la Legislatura Provincial, donde presidió la Comisión
+                            de Asuntos Constitucionales y la Comisión Bicameral de Enlace.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">Posterior</span>
+                        <h3>Presidente del Tribunal de Cuentas</h3>
+                        <p>Ocupó el cargo de Presidente y Vocal del Honorable Tribunal de Cuentas de la Provincia de San
+                            Luis, velando por la transparencia en el manejo de los fondos públicos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">2022 - 2026</span>
+                        <h3>Presidente SPTCRA</h3>
+                        <p>Presidente del Secretariado Permanente de Tribunales de Cuentas, Órganos y Organismos
+                            Públicos de Control Externo de la República Argentina.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="libros" class="books-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Obras Publicadas</h2>
+            </div>
+            <div class="books-container">
+                <div class="book-item">
+                    <img src="./1.jpg" alt="Libro Dar Cuenta">
+                    <div class="book-info">
+                        <h3 class="book-title">"Dar Cuenta"</h3>
+                        <p class="book-year">Editorial Marzo S.A - 1996</p>
+                        <p class="book-description">Una obra que refleja la experiencia y visión del autor sobre la
+                            rendición de cuentas y la transparencia en la gestión pública.</p>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <img src="./2.jpeg" alt="Memorias de Villa Mercedes">
+                    <div class="book-info">
+                        <h3 class="book-title">"Memorias de Villa Mercedes"</h3>
+                        <p class="book-year">San Luis Libro - 2017</p>
+                        <p class="book-description">Un recorrido por la historia y cultura de Villa Mercedes, destacando
+                            lugares emblemáticos como Caminito y la Calle Angosta.</p>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <img src="./3.jpeg" alt="Cuentos para Valentino">
+                    <div class="book-info">
+                        <h3 class="book-title">"Cuentos para Valentino"</h3>
+                        <p class="book-year">San Luis Libro - 2022</p>
+                        <p class="book-description">Una colección de relatos para niños que busca transmitir valores y
+                            enseñanzas a través de historias cautivadoras.</p>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <img src="./4.webp" alt="Juana Koslay - Arocena">
+                    <div class="book-info">
+                        <h3 class="book-title">"Juana Koslay -- Arocena - La ultima princesa"</h3>
+                        <p class="book-year">DUNKEN - 2024</p>
+                        <p class="book-description">Su obra más reciente explora la historia de Juana Koslay y la figura
+                            de Arocena, recuperando el legado histórico y cultural de la región.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Achievement Section -->
+    <section id="deportes" class="sport-achievements">
+        <div class="section-title">
+            <h2>Logros Deportivos</h2>
+        </div>
+        <div class="achievements-container">
+            <div class="achievement-item">
+                <div class="achievement-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="achievement-title">Rally - Categoría A6</h3>
+                <p class="achievement-description">Campeón Provincial de San Luis (2000)</p>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3 class="achievement-title">Rally - Categoría A7</h3>
+                <p class="achievement-description">Campeón Provincial de San Luis (2001)</p>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3 class="achievement-title">Rally - Categoría N2</h3>
+                <p class="achievement-description">Campeón Provincial de San Luis (2013)</p>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-icon">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+                <h3 class="achievement-title">Campeonato Absoluto</h3>
+                <p class="achievement-description">Campeón Provincial de San Luis (2013)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section>
+        <div class="section-container">
+            <div class="coming-soon">
+                <h2>Sitio Web en Desarrollo</h2>
+                <p>Estamos trabajando para ofrecerle una experiencia completa. Muy pronto podrá descubrir más
+                    información sobre la trayectoria, obras y actividades de Sergio Tomás Oste.</p>
+
+                <!--<div class="launch-countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number">15</div>
+                        <div class="countdown-label">Días</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">08</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">42</div>
+                        <div class="countdown-label">Min</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">17</div>
+                        <div class="countdown-label">Seg</div>
+                    </div>
+                </div> -->
+
+                <p>¿Desea recibir una notificación cuando el sitio esté completo?</p>
+
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Su correo electrónico">
+                    <button class="newsletter-button">Suscribirse</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:contacto@sergiotomasoste.com">contacto@sergiotomasoste.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>San Luis, Argentina</p>
+                    </div>
+
+                    <!--<div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>-->
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envíe un Mensaje</h3>
+                    <form id="contactForm">
+                        <div style="margin-bottom: 20px;">
+                            <input type="text" placeholder="Nombre"
+                                style="width: 100%; padding: 12px; border: none; border-radius: 4px; margin-bottom: 10px;">
+                            <input type="email" placeholder="Correo Electrónico"
+                                style="width: 100%; padding: 12px; border: none; border-radius: 4px; margin-bottom: 10px;">
+                            <textarea placeholder="Mensaje"
+                                style="width: 100%; padding: 12px; border: none; border-radius: 4px; height: 150px; resize: none;"></textarea>
+                        </div>
+                        <button type="submit"
+                            style="background: var(--accent); color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: var(--transition);">Enviar
+                            Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Sergio Tomás Oste. Todos los derechos reservados.</p>
+            <p>Desarrollado por <a href="https://codeo.site/" target="_blank"> <img style="width: 20px; margin-bottom: -5px;" src="codeo.png" alt="" srcset=""> </a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function () {
+            const loaderOverlay = document.querySelector('.loader-overlay');
+            loaderOverlay.classList.add('hide-loader');
+            setTimeout(() => {
+                loaderOverlay.style.display = 'none';
+            }, 1000);
+        });
+
+        // Sticky Navbar
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' :
+                '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on Scroll
+        const animateOnScroll = function () {
+            const elements = document.querySelectorAll('.timeline-item');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                } else {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(30px)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form Submission (Placeholder)
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Gracias por su mensaje. Le responderemos a la brevedad.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
