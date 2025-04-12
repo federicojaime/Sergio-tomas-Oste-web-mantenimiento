@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juana Koslay - Arocena, la última princesa | Sergio Tomás Oste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a2639;
+            --secondary: #3f51b5;
+            --accent: #ff5722;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --text: #333333;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #2a3243;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #222b3c;
+            padding: 15px 0;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            color: var(--accent);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .book-container {
+            background-color: white;
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .book-header {
+            padding: 30px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .book-title {
+            font-size: 2.2rem;
+            color: #2a3243;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .book-subtitle {
+            font-size: 1.4rem;
+            color: #555;
+            font-weight: 400;
+        }
+
+        .book-content {
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .book-image {
+            flex: 0 0 auto;
+            max-width: 250px;
+        }
+
+        .book-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-description {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .book-description p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .download-section {
+            background-color: #f0f0f0;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 35px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+        }
+
+        .download-btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        .footer {
+            background-color: #222b3c;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-image {
+                max-width: 200px;
+            }
+
+            .book-description {
+                text-align: center;
+            }
+
+            .book-title {
+                font-size: 1.8rem;
+            }
+
+            .book-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Sergio<span>Oste</span></a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver al inicio
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="book-container">
+            <div class="book-header">
+                <h1 class="book-title">Juana Koslay - Arocena</h1>
+                <h2 class="book-subtitle">La última princesa</h2>
+            </div>
+
+            <div class="book-content">
+                <div class="book-image">
+                    <img src="./arocena.jpg" alt="Portada del libro Juana Koslay - Arocena">
+                </div>
+                
+                <div class="book-description">
+                    <p>
+                        Esta obra del reconocido autor Sergio Tomás Oste explora la fascinante historia de Juana Koslay y la figura de Arocena, recuperando el legado histórico y cultural de la región de San Luis. Una narrativa cautivadora que nos transporta a través del tiempo para conocer a la última princesa.
+                    </p>
+                    <p>
+                        Publicado por Editorial DUNKEN en 2024, este libro es el resultado de una exhaustiva investigación histórica combinada con la maestría narrativa que caracteriza al autor.
+                    </p>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <a href="#" class="download-btn" id="downloadBtn">
+                    <i class="fas fa-download"></i> Descargar PDF
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Sergio Tomás Oste. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Script para manejar la descarga
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Iniciamos la descarga del archivo PDF
+            window.location.href = 'arocena.pdf';
+        });
+    </script>
+</body>
+
+</html>

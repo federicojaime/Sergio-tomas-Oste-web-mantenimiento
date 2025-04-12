@@ -68,7 +68,7 @@
 
         header {
             height: 100vh;
-            background: linear-gradient(to right, rgba(26, 38, 57, 0.9), rgba(63, 81, 181, 0.8)), url('/api/placeholder/1920/1080');
+            background: linear-gradient(to right, rgba(26, 38, 57, 0.9), rgba(63, 81, 181, 0.8)), url('./back.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -1065,10 +1065,11 @@
 
                 <p>¿Desea recibir una notificación cuando el sitio esté completo?</p>
 
-                <div class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Su correo electrónico">
-                    <button class="newsletter-button">Suscribirse</button>
-                </div>
+                <form class="newsletter-form" id="subscriptionForm">
+                    <input type="email" class="newsletter-input" placeholder="Su correo electrónico" required>
+                    <button type="submit" class="newsletter-button">Suscribirse</button>
+                </form>
+                
             </div>
         </div>
     </section>
@@ -1103,11 +1104,11 @@
                     <h3>Envíe un Mensaje</h3>
                     <form id="contactForm">
                         <div style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Nombre"
+                            <input type="text" id="contactName" placeholder="Nombre" required
                                 style="width: 100%; padding: 12px; border: none; border-radius: 4px; margin-bottom: 10px;">
-                            <input type="email" placeholder="Correo Electrónico"
+                            <input type="email" id="contactEmail" placeholder="Correo Electrónico" required
                                 style="width: 100%; padding: 12px; border: none; border-radius: 4px; margin-bottom: 10px;">
-                            <textarea placeholder="Mensaje"
+                            <textarea id="contactMessage" placeholder="Mensaje" required
                                 style="width: 100%; padding: 12px; border: none; border-radius: 4px; height: 150px; resize: none;"></textarea>
                         </div>
                         <button type="submit"
@@ -1123,9 +1124,158 @@
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Sergio Tomás Oste. Todos los derechos reservados.</p>
-            <p>Desarrollado por <a href="https://codeo.site/" target="_blank"> <img style="width: 20px; margin-bottom: -5px;" src="codeo.png" alt="" srcset=""> </a></p>
+            <p>Desarrollado por <a href="https://codeo.site/" target="_blank"> <img
+                        style="width: 20px; margin-bottom: -5px;" src="codeo.png" alt="" srcset=""> </a></p>
         </div>
     </footer>
+    <script>
+        // URL de tu Google Apps Script (implementado como Web App con acceso "Cualquiera, incluso anónimo")
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwn-5fuzC3k-6UX0KI4GboNoR8J0DbZMV3goK9xLrv50lB_5zBLKzU-OplXg7DrOos/exec";
+    
+        // Apenas cargue la página...
+        window.addEventListener('load', function() {
+          // Si tenés preloader:
+          const loaderOverlay = document.querySelector('.loader-overlay');
+          loaderOverlay.classList.add('hide-loader');
+          setTimeout(() => {
+            loaderOverlay.style.display = 'none';
+          }, 1000);
+        });
+    
+        // === Sticky Navbar ===
+        window.addEventListener('scroll', function() {
+          const navbar = document.querySelector('.navbar');
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    
+        // === Mobile Menu Toggle ===
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          hamburger.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+        });
+    
+        // === Smooth Scrolling ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (navLinks.classList.contains('active')) {
+              navLinks.classList.remove('active');
+              hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+          });
+        });
+    
+        // === Animation on Scroll (para .timeline-item) ===
+        function animateOnScroll() {
+          const elements = document.querySelectorAll('.timeline-item');
+          const windowHeight = window.innerHeight;
+    
+          elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            if (elementPosition < windowHeight - 100) {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            } else {
+              element.style.opacity = '0';
+              element.style.transform = 'translateY(30px)';
+            }
+          });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    
+    
+        // === FORMULARIOS: se envían con fetch() ===
+    
+        // 1) Formulario de Contacto
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault(); // Evita recarga
+    
+          const name = document.getElementById('contactName').value.trim();
+          const email = document.getElementById('contactEmail').value.trim();
+          const message = document.getElementById('contactMessage').value.trim();
+    
+          if(!name || !email || !message) {
+            alert('Por favor, complete todos los campos.');
+            return;
+          }
+    
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const originalText = submitButton.textContent;
+          submitButton.textContent = 'Enviando...';
+          submitButton.disabled = true;
+    
+          // Preparamos los datos como FormData o URLSearchParams
+          const formData = new URLSearchParams();
+          formData.append('type', 'contact');
+          formData.append('name', name);
+          formData.append('email', email);
+          formData.append('message', message);
+    
+          try {
+            const response = await fetch(SCRIPT_URL, {
+              method: 'POST',
+              body: formData,
+            });
+            if (!response.ok) throw new Error('Respuesta HTTP no OK');
+    
+            // Si todo va bien
+            alert('Gracias por su mensaje. Le responderemos a la brevedad.');
+            contactForm.reset();
+          } catch (err) {
+            console.error(err);
+            alert('Gracias por su mensaje. Le responderemos a la brevedad.');
+          } finally {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }
+        });
+    
+        // 2) Formulario de Suscripción
+        const subscriptionForm = document.getElementById('subscriptionForm');
+        subscriptionForm.addEventListener('submit', async function(e) {
+          e.preventDefault(); // Evita recarga
+    
+          const emailInput = subscriptionForm.querySelector('.newsletter-input');
+          const email = emailInput.value.trim();
+          if (!email) {
+            alert('Por favor, ingrese su correo electrónico.');
+            return;
+          }
+    
+          const submitButton = subscriptionForm.querySelector('button[type="submit"]');
+          const originalText = submitButton.textContent;
+          submitButton.textContent = 'Enviando...';
+          submitButton.disabled = true;
+    
+          const formData = new URLSearchParams();
+          formData.append('type', 'subscription');
+          formData.append('email', email);
+    
+          try {
+            const response = await fetch(SCRIPT_URL, {
+              method: 'POST',
+              body: formData,
+            });
+            if (!response.ok) throw new Error('Respuesta HTTP no OK');
+    
+            alert('¡Gracias por suscribirse! Le notificaremos cuando el sitio esté completo.');
+            subscriptionForm.reset();
+          } catch (err) {
+            console.error(err);
+            alert('¡Gracias por suscribirse! Le notificaremos cuando el sitio esté completo.');
+          } finally {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }
+        });
+      </script>
 
     <script>
         // Preloader
@@ -1191,13 +1341,8 @@
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
 
-        // Form Submission (Placeholder)
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Gracias por su mensaje. Le responderemos a la brevedad.');
-            this.reset();
-        });
     </script>
+     
 </body>
 
 </html>
