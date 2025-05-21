@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import tomasImage from '/assets/tomas.jpg'; // Importación de imagen
 
 const About = () => {
     const [ref, inView] = useInView({
@@ -38,7 +39,7 @@ const About = () => {
                         >
                             <div className="relative overflow-hidden rounded-lg shadow-xl">
                                 <img
-                                    src="/src/assets/tomas.jpg"
+                                    src={tomasImage} // Usando la imagen importada
                                     alt="Sergio Tomás Oste"
                                     className="w-full transform transition-transform duration-500 hover:scale-105"
                                 />

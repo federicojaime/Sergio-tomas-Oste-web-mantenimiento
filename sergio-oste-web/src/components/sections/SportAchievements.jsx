@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaTrophy, FaMedal, FaCar, FaFlagCheckered } from 'react-icons/fa';
+import { FaTrophy, FaMedal,FaArrowRight , FaCar, FaFlagCheckered } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const achievementsData = [
     {
@@ -88,6 +89,15 @@ const SportAchievements = () => {
                         </motion.div>
                     ))}
                 </motion.div>
+            </div>
+            <div className="text-center mt-12">
+                <Link
+                    to="/historia-deportiva"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-white font-semibold rounded-full transition-all hover:-translate-y-1 shadow-md"
+                >
+                    Ver historia completa
+                    <FaArrowRight />
+                </Link>
             </div>
         </section>
     );

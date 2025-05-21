@@ -4,8 +4,9 @@ import NavBar from './components/layout/NavBar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import BookDetail from './pages/BookDetail';
-import LiteraryNotes from './components/sections/LiteraryNotes';
+import LiteraryNotes from './pages/LiteraryNotes';   // ¡CORREGIDO!
 import LiteraryNoteDetail from './pages/LiteraryNoteDetail';
+import SportHistory from './pages/SportHistory';
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
             <Route path="/juana-koslay" element={<BookDetail />} />
             <Route path="/notas-literarias" element={<LiteraryNotes />} />
             <Route path="/notas-literarias/:id" element={<LiteraryNoteDetail />} />
+            <Route path="/historia-deportiva" element={<SportHistory />} />
+
+
           </Routes>
         </main>
         <Footer />

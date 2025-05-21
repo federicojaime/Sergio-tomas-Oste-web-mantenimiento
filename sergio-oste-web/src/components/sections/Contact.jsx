@@ -110,7 +110,7 @@ const Contact = () => {
                                 <p>San Luis, Argentina</p>
                             </motion.div>
                         </div>
-
+                        {/** 
                         <motion.div
                             variants={itemVariants}
                             className="mt-10"
@@ -129,7 +129,7 @@ const Contact = () => {
                                     </motion.a>
                                 ))}
                             </div>
-                        </motion.div>
+                        </motion.div>*/}
                     </motion.div>
 
                     {/* Contact Form */}
