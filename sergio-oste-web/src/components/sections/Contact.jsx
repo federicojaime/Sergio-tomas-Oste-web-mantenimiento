@@ -26,18 +26,30 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulando envío de formulario
-        setTimeout(() => {
-            setFormStatus({
-                type: 'success',
-                message: 'Gracias por su mensaje. Le responderemos a la brevedad.'
+        try {
+            const response = await fetch('https://formspree.io/f/xjkwdgpv', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
-            setFormData({ name: '', email: '', message: '' });
-            setIsSubmitting(false);
 
-            // Reset after 5 seconds
-            setTimeout(() => setFormStatus(null), 5000);
-        }, 1500);
+            if (response.ok) {
+                setFormStatus({
+                    type: 'success',
+                    message: 'Mensaje enviado correctamente'
+                });
+                setFormData({ name: '', email: '', message: '' });
+            }
+        } catch (error) {
+            setFormStatus({
+                type: 'error',
+                message: 'Error al enviar el mensaje'
+            });
+        }
+        setIsSubmitting(false);
     };
 
     const containerVariants = {

@@ -7,6 +7,7 @@ import BookDetail from './pages/BookDetail';
 import LiteraryNotes from './pages/LiteraryNotes';   // ¡CORREGIDO!
 import LiteraryNoteDetail from './pages/LiteraryNoteDetail';
 import SportHistory from './pages/SportHistory';
+import CVDownloadWidget from './components/ui/CVDownloadWidget';
 
 const App = () => {
   return (
@@ -20,11 +21,10 @@ const App = () => {
             <Route path="/notas-literarias" element={<LiteraryNotes />} />
             <Route path="/notas-literarias/:id" element={<LiteraryNoteDetail />} />
             <Route path="/historia-deportiva" element={<SportHistory />} />
-
-
           </Routes>
         </main>
         <Footer />
+        <CVDownloadWidget />
       </div>
     </Router>
   );
