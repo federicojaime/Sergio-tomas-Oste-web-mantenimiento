@@ -44,6 +44,16 @@ const LiteraryNotes = () => {
     // Videos destacados
     const videos = [
         {
+            url: "https://www.youtube.com/watch?v=uaVlRqeqfnk",
+            title: "Sergio Oste - Reunión Especializada de Organismos Gubernamentales de Control Interno del Mercosur",
+            thumbnail: `https://img.youtube.com/vi/uaVlRqeqfnk/mqdefault.jpg`
+        },
+        {
+            url: "https://www.youtube.com/watch?v=LrDLq6xzLyA",
+            title: "Sergio Oste - Otra Visión del Control Estatal.",
+            thumbnail: `https://img.youtube.com/vi/LrDLq6xzLyA/mqdefault.jpg`
+        },
+        {
             url: "https://www.youtube.com/watch?v=lq9oV07i4wI",
             title: "Crisis en América Latina - Congresso Internacional de Direito Financeiro",
             thumbnail: `https://img.youtube.com/vi/lq9oV07i4wI/mqdefault.jpg`
@@ -92,6 +102,24 @@ const LiteraryNotes = () => {
 
     // Notas de prensa
     const pressArticles = [
+        {
+            url: "https://irbcontas.org.br/reconhecimento-e-gratidao-marcam-homenagens-durante-o-ix-congresso-internacional-de-controle-e-politicas-publicas/",
+            title: "Reconhecimento e gratidão marcam homenagens durante o\" IX Congresso Internacional de Controle e Políticas Públicas\"",
+            source: "Instituto Rui Barbosa",
+            date: "27 de mayo 2025"
+        },
+        {
+            url: "https://atricon.org.br/atricon-participa-da-abertura-do-ix-congresso-internacional-de-controle-e-politicas-publicas/",
+            title: "Atricon participa da abertura do IX Congresso Internacional de Controle e Políticas Públicas\"",
+            source: "Atricon",
+            date: "28 de mayo 2025"
+        },
+        {
+            url: "https://www.to.gov.br/secom/noticias/governador-wanderlei-barbosa-recebe-conselheiros-de-tribunais-de-contas-da-argentina/6t36ww1dq58q",
+            title: "Governador Wanderlei Barbosa recebe conselheiros de Tribunais de Contas da Argentina\"",
+            source: "Governo do Tocantins",
+            date: "4 febrero 2025"
+        },
         {
             url: "https://www.eldiariodelarepublica.com/nota/2022-4-18-7-32-0-sergio-oste-presento-su-libro-cuentos-para-valentino",
             title: "Sergio Oste presentó su libro, \"cuentos para Valentino\"",
@@ -219,21 +247,19 @@ const LiteraryNotes = () => {
                             <div className="flex border-b border-gray-200 mb-6">
                                 <button
                                     onClick={() => setActiveTab('videos')}
-                                    className={`flex items-center py-3 px-4 font-medium text-sm border-b-2 -mb-px ${
-                                        activeTab === 'videos' 
-                                            ? 'border-accent text-accent' 
+                                    className={`flex items-center py-3 px-4 font-medium text-sm border-b-2 -mb-px ${activeTab === 'videos'
+                                            ? 'border-accent text-accent'
                                             : 'border-transparent text-gray-500 hover:text-gray-700'
-                                    }`}
+                                        }`}
                                 >
                                     <FaYoutube className="mr-2" /> Videos
                                 </button>
                                 <button
                                     onClick={() => setActiveTab('press')}
-                                    className={`flex items-center py-3 px-4 font-medium text-sm border-b-2 -mb-px ${
-                                        activeTab === 'press' 
-                                            ? 'border-accent text-accent' 
+                                    className={`flex items-center py-3 px-4 font-medium text-sm border-b-2 -mb-px ${activeTab === 'press'
+                                            ? 'border-accent text-accent'
                                             : 'border-transparent text-gray-500 hover:text-gray-700'
-                                    }`}
+                                        }`}
                                 >
                                     <FaNewspaper className="mr-2" /> Prensa
                                 </button>
@@ -245,25 +271,25 @@ const LiteraryNotes = () => {
                                     <h2 className="text-xl font-bold text-primary mb-4 flex items-center">
                                         <FaYoutube className="mr-2 text-red-600" /> Videos Destacados
                                     </h2>
-                                    
+
                                     <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
                                         {videos.map((video, index) => (
-                                            <motion.div 
+                                            <motion.div
                                                 key={index}
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: index * 0.05 }}
                                                 className="group"
                                             >
-                                                <a 
-                                                    href={video.url} 
-                                                    target="_blank" 
+                                                <a
+                                                    href={video.url}
+                                                    target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="flex flex-col space-y-2 transition-all hover:bg-gray-50 rounded-lg p-2"
                                                 >
                                                     <div className="relative rounded-md overflow-hidden">
-                                                        <img 
-                                                            src={video.thumbnail} 
+                                                        <img
+                                                            src={video.thumbnail}
                                                             alt={video.title}
                                                             className="w-full h-auto object-cover aspect-video rounded-md transition-transform duration-300 group-hover:scale-105"
                                                         />
@@ -283,11 +309,11 @@ const LiteraryNotes = () => {
                                             </motion.div>
                                         ))}
                                     </div>
-                                    
+
                                     <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-                                        <a 
-                                            href="https://www.youtube.com/results?search_query=sergio+oste" 
-                                            target="_blank" 
+                                        <a
+                                            href="https://www.youtube.com/results?search_query=sergio+oste"
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center text-accent hover:underline"
                                         >
@@ -301,18 +327,18 @@ const LiteraryNotes = () => {
                                     <h2 className="text-xl font-bold text-primary mb-4 flex items-center">
                                         <FaNewspaper className="mr-2 text-gray-600" /> Notas de Prensa
                                     </h2>
-                                    
+
                                     <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
                                         {pressArticles.map((article, index) => (
-                                            <motion.div 
+                                            <motion.div
                                                 key={index}
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: index * 0.05 }}
                                             >
-                                                <a 
-                                                    href={article.url} 
-                                                    target="_blank" 
+                                                <a
+                                                    href={article.url}
+                                                    target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="block p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors hover:border-gray-200"
                                                 >
