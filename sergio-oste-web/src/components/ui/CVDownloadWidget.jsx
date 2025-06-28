@@ -89,13 +89,14 @@ const CVDownloadWidget = () => {
                             <div className="flex items-center gap-2 sm:gap-3">
                                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-lg flex items-center justify-center">
                                     <FaFileAlt className="text-white text-sm sm:text-lg" />
+
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm sm:text-lg">Curriculum Vitae</h3>
                                     <p className="text-white/80 text-xs sm:text-sm">Sergio Tomás Oste - Actualizado 2025</p>
                                 </div>
                             </div>
-                            
+
                             <div className="flex items-center gap-1 sm:gap-2">
                                 {/* Botón pantalla completa (solo desktop) */}
                                 {!isMobile && (
@@ -120,7 +121,7 @@ const CVDownloadWidget = () => {
                                         <FaExpand className="text-xs sm:text-sm" />
                                     </motion.button>
                                 )}
-                                
+
                                 {/* Botón compartir */}
                                 <motion.button
                                     onClick={handleShare}
@@ -131,7 +132,7 @@ const CVDownloadWidget = () => {
                                 >
                                     <FaShare className="text-xs sm:text-sm" />
                                 </motion.button>
-                                
+
                                 {/* Botón descargar */}
                                 <motion.button
                                     onClick={handleDirectDownload}
@@ -142,7 +143,7 @@ const CVDownloadWidget = () => {
                                 >
                                     <FaDownload className="text-xs sm:text-sm" />
                                 </motion.button>
-                                
+
                                 {/* Botón cerrar */}
                                 <motion.button
                                     onClick={() => setShowPDFViewer(false)}
@@ -163,7 +164,7 @@ const CVDownloadWidget = () => {
                                     src="/assets/cv-sergio-tomas-oste.pdf#toolbar=1&navpanes=1&scrollbar=1&zoom=page-fit&view=FitH"
                                     className="pdf-iframe w-full h-full border-0"
                                     title="CV Sergio Tomás Oste"
-                                    style={{ 
+                                    style={{
                                         minHeight: isMobile ? '60vh' : '75vh',
                                         backgroundColor: '#f8f9fa'
                                     }}
@@ -184,7 +185,7 @@ const CVDownloadWidget = () => {
                                     <FaDownload className="text-sm" />
                                     Descargar PDF
                                 </motion.button>
-                                
+
                                 <motion.button
                                     onClick={handleShare}
                                     className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full transition-all shadow-md text-sm sm:text-base"
@@ -194,7 +195,7 @@ const CVDownloadWidget = () => {
                                     <FaShare className="text-sm" />
                                     Compartir
                                 </motion.button>
-                                
+
                                 <motion.button
                                     onClick={() => setShowPDFViewer(false)}
                                     className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full transition-all shadow-md text-sm sm:text-base"
@@ -205,7 +206,7 @@ const CVDownloadWidget = () => {
                                     Cerrar
                                 </motion.button>
                             </div>
-                            
+
                             {/* Info adicional */}
                             <div className="mt-3 pt-3 border-t border-white/10 text-center">
                                 <p className="text-white/80 text-xs sm:text-sm">
@@ -227,10 +228,10 @@ const CVDownloadWidget = () => {
                                     initial={{ opacity: 0, y: 50, scale: 0.8 }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: 50, scale: 0.8 }}
-                                    transition={{ 
-                                        type: "spring", 
-                                        stiffness: 300, 
-                                        damping: 20 
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 300,
+                                        damping: 20
                                     }}
                                     className="mb-4 sm:mb-6 bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl shadow-2xl border border-gray-100 overflow-hidden w-64 sm:w-72 md:w-80 max-w-[calc(100vw-2rem)]"
                                     style={{
@@ -246,6 +247,7 @@ const CVDownloadWidget = () => {
                                                 <div className="flex items-center gap-2 sm:gap-3">
                                                     <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                                                         <FaFileAlt className="text-white text-base sm:text-lg md:text-xl" />
+
                                                     </div>
                                                     <div>
                                                         <h3 className="font-bold text-sm sm:text-base md:text-lg">Curriculum Vitae</h3>
@@ -261,7 +263,7 @@ const CVDownloadWidget = () => {
                                                     <FaTimes className="text-xs sm:text-sm" />
                                                 </motion.button>
                                             </div>
-                                            
+
                                             {/* Highlights */}
                                             <div className="space-y-1.5 sm:space-y-2">
                                                 {highlights.map((highlight, index) => (
@@ -278,7 +280,7 @@ const CVDownloadWidget = () => {
                                                 ))}
                                             </div>
                                         </div>
-                                        
+
                                         {/* Decorative elements */}
                                         <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 bg-white/10 rounded-full"></div>
                                         <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-12 h-12 sm:w-16 sm:h-16 bg-accent/20 rounded-full"></div>
@@ -287,12 +289,12 @@ const CVDownloadWidget = () => {
                                     {/* Body */}
                                     <div className="p-4 sm:p-5 md:p-6">
                                         <p className="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
-                                            {isMobile 
+                                            {isMobile
                                                 ? "Ve el curriculum completo con toda la trayectoria profesional, académica y deportiva de más de 30 años de experiencia."
                                                 : "Descarga el curriculum completo con toda la trayectoria profesional, académica y deportiva de más de 30 años de experiencia."
                                             }
                                         </p>
-                                        
+
                                         {/* Action button */}
                                         <motion.button
                                             onClick={handleDownload}
@@ -337,21 +339,21 @@ const CVDownloadWidget = () => {
                         <motion.div
                             initial={{ scale: 0, rotate: -180 }}
                             animate={{ scale: 1, rotate: 0 }}
-                            transition={{ 
-                                type: "spring", 
-                                stiffness: 200, 
+                            transition={{
+                                type: "spring",
+                                stiffness: 200,
                                 damping: 15,
                                 delay: 0.5
                             }}
-                            className="relative"
+                            className="relative flex flex-col items-center"
                         >
                             {/* Glow effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-full blur-lg opacity-70 animate-pulse"></div>
-                            
+
                             {/* Main button */}
                             <motion.button
                                 onClick={() => setIsExpanded(!isExpanded)}
-                                className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-accent via-accent to-primary text-white rounded-full shadow-2xl flex items-center justify-center overflow-hidden group"
+                                className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-accent via-accent to-primary text-white rounded-full shadow-2xl flex items-center justify-center overflow-hidden group z-10"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 animate={{
@@ -371,10 +373,10 @@ const CVDownloadWidget = () => {
                             >
                                 {/* Background animation */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                                
+
                                 {/* Icon */}
                                 <motion.div
-                                    animate={{ 
+                                    animate={{
                                         rotate: isExpanded ? 135 : 0,
                                         scale: isExpanded ? 0.8 : 1
                                     }}
@@ -387,10 +389,20 @@ const CVDownloadWidget = () => {
                                         <FaEye className="text-base sm:text-lg md:text-xl" />
                                     )}
                                 </motion.div>
-                                
+
                                 {/* Ripple effect */}
                                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 bg-white animate-ping"></div>
                             </motion.button>
+
+                            {/* Texto "Ver CV" para celulares */}
+                            {!isExpanded && isMobile && (
+                                <div className="absolute right-full mr-3 bottom-1/2 translate-y-1/2 bg-black/80 text-white text-xs font-semibold rounded-full px-4 py-1.5 min-w-[90px] flex items-center justify-center gap-1 shadow-lg sm:hidden z-50">
+                                    <FaFileAlt className="text-accent text-sm" />
+                                    <span>Ver CV</span>
+                                </div>
+                            )}
+
+
 
                             {/* Floating particles - solo en desktop */}
                             <motion.div
@@ -405,7 +417,7 @@ const CVDownloadWidget = () => {
                                 }}
                                 className="hidden sm:block absolute -top-2 -right-2 w-3 h-3 bg-accent/60 rounded-full"
                             ></motion.div>
-                            
+
                             <motion.div
                                 animate={{
                                     y: [5, -5, 5],
@@ -422,7 +434,7 @@ const CVDownloadWidget = () => {
 
                             {/* Tooltip mejorado - solo en desktop */}
                             <AnimatePresence>
-                                {!isExpanded && (
+                                {!isExpanded && !isMobile && (
                                     <motion.div
                                         initial={{ opacity: 0, x: 20, scale: 0.8 }}
                                         animate={{ opacity: 1, x: 0, scale: 1 }}
